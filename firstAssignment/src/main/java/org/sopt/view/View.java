@@ -69,4 +69,9 @@ public class View {
         System.out.println(name + "님의 잔액은 " + asset + "원입니다!");
         System.out.print(">>> ");
     }
+
+    //잔액부족 시 출력
+    public static void printNotEnoughMoney(){
+        System.out.println("잔액이 부족합니다!");
+    }
 }

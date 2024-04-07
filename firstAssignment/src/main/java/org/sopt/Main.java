@@ -62,7 +62,13 @@ public class Main {
                     accountFrom = info.nextToken();
                     money = Long.parseLong(info.nextToken());
                     //출금 작업 시작
-                    bankService.withdraw(bank.findByAccount(accountFrom), money);
+                    try {
+                        bankService.withdraw(bank.findByAccount(accountFrom), money);
+                    }
+                    catch (IllegalArgumentException e){
+                        View.printNotEnoughMoney();
+                        continue;
+                    }
                     //작업 후 출력
                     View.printAfterWithdraw(bank.findByAccount(accountFrom).getName(), bank.findByAccount(accountFrom).getAsset());
                 }
@@ -77,7 +83,13 @@ public class Main {
                     accountTo = info.nextToken();
                     money = Long.parseLong(info.nextToken());
                     //계좌이체 작업 시작
-                    bankService.accountTransfer(bank.findByAccount(accountFrom), bank.findByAccount(accountTo), money);
+                    try {
+                        bankService.accountTransfer(bank.findByAccount(accountFrom), bank.findByAccount(accountTo), money);
+                    }
+                    catch (IllegalArgumentException e){
+                        View.printNotEnoughMoney();
+                        continue;
+                    }
                     //작업 후 출력
                     View.printAfterAccountTransfer(bank.findByAccount(accountFrom).getName(), bank.findByAccount(accountFrom).getAsset());
                 }
