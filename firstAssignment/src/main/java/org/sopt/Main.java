@@ -19,13 +19,13 @@ public class Main {
         String accountFrom, accountTo;
         Long money;
 
-        while (true){
+        while (true) {
             // 초기 화면 출력 및 작업 입력
             View.init();
             order = Input.inputOrder();
 
             // 등록작업
-            if (order == 1){
+            if (order == 1) {
 
                 //화면 출력 및 입력
                 View.printResister();
@@ -33,7 +33,7 @@ public class Main {
             }
 
             // 예금작업
-            if(order == 2) {
+            if (order == 2) {
 
                 //화면 출력 및 입력
                 View.printDepositOption();
@@ -64,8 +64,7 @@ public class Main {
                     //출금 작업 시작
                     try {
                         bankService.withdraw(bank.findByAccount(accountFrom), money);
-                    }
-                    catch (IllegalArgumentException e){
+                    } catch (IllegalArgumentException e) {
                         View.printNotEnoughMoney();
                         continue;
                     }
@@ -85,8 +84,7 @@ public class Main {
                     //계좌이체 작업 시작
                     try {
                         bankService.accountTransfer(bank.findByAccount(accountFrom), bank.findByAccount(accountTo), money);
-                    }
-                    catch (IllegalArgumentException e){
+                    } catch (IllegalArgumentException e) {
                         View.printNotEnoughMoney();
                         continue;
                     }
@@ -96,7 +94,7 @@ public class Main {
             }
 
             // 종료
-            if(order == 3){
+            if (order == 3) {
                 break;
             }
         }
