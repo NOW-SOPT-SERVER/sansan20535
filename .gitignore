@@ -149,3 +149,6 @@ Temporary Items
 *.icloud
 
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij+all,macos
+
+### h2 DB ###
+/h2
