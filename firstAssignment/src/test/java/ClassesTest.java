@@ -12,7 +12,7 @@ public class ClassesTest {
         // repository 테스트
         bank.save(new Customer(1L, "의진", "1111", 5000L));
         bank.save(new Customer(2L, "미진", "2222", 10000L));
-        Customer want = bank.findByName("의진");
+        Customer want = bank.findByAccount("2222");
 
         System.out.println("want.getId() = " + want.getId());
         System.out.println("want.getName() = " + want.getName());
@@ -21,7 +21,7 @@ public class ClassesTest {
         System.out.println("-------------------------------------------");
 
         // service 테스트
-        Customer want2 = bank.findByName("미진");
+        Customer want2 = bank.findByAccount("1111");
         bankService.deposit(want, 3000L);
         System.out.println("want.getAsset() = " + want.getAsset());
         bankService.withdraw(want, 2000L);
