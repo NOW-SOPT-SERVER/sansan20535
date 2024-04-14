@@ -4,7 +4,7 @@ import org.sopt.entity.Customer;
 
 import java.util.HashMap;
 
-public class BankImpl implements Bank {
+public class BankRepositoryImpl implements BankRepository {
     // 고객 정보 저장소(Hash map)
     HashMap<String, Customer> bank = new HashMap<String, Customer>();
 

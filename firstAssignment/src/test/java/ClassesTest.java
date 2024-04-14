@@ -1,12 +1,12 @@
 import org.sopt.entity.Customer;
-import org.sopt.repository.Bank;
-import org.sopt.repository.BankImpl;
+import org.sopt.repository.BankRepository;
+import org.sopt.repository.BankRepositoryImpl;
 import org.sopt.service.BankService;
 import org.sopt.service.BankServiceImpl;
 
 public class ClassesTest {
     public static void main(String[] args) {
-        Bank bank = new BankImpl();
+        BankRepository bank = new BankRepositoryImpl();
         BankService bankService = new BankServiceImpl();
 
         // repository 테스트

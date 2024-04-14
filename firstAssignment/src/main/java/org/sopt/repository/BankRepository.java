@@ -2,7 +2,7 @@ package org.sopt.repository;
 
 import org.sopt.entity.Customer;
 
-public interface Bank {
+public interface BankRepository {
 
     // 고객 정보 저장
     public void save(Customer customer);

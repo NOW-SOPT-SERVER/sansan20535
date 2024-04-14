@@ -37,4 +37,8 @@ public class Customer {
     public Long getAsset() {
         return asset;
     }
+
+    public void setAsset(Long asset) {
+        this.asset = asset;
+    }
 }
