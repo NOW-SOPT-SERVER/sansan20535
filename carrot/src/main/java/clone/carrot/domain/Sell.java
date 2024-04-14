@@ -16,6 +16,8 @@ public class Sell {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String nickname;
+
     private String title;
 
     private long cost;
@@ -27,23 +29,29 @@ public class Sell {
     @Enumerated(EnumType.STRING)
     private Place place;
 
+    private boolean soldOut;
+
     @Builder
-    public Sell(String title, long cost, boolean costPropose, String detail, Place place) {
+    public Sell(String nickname, String title, long cost, boolean costPropose, String detail, Place place, boolean soldOut) {
+        this.nickname = nickname;
         this.title = title;
         this.cost = cost;
         this.costPropose = costPropose;
         this.detail = detail;
         this.place = place;
+        this.soldOut = soldOut;
     }
 
 
-    public static Sell create(String title, long cost, boolean costPropose, String detail, Place place) {
+    public static Sell create(String nickname, String title, long cost, boolean costPropose, String detail, Place place, boolean soldOut) {
         return Sell.builder()
+                .nickname(nickname)
                 .title(title)
                 .cost(cost)
                 .costPropose(costPropose)
                 .detail(detail)
                 .place(place)
+                .soldOut(soldOut)
                 .build();
     }
 }

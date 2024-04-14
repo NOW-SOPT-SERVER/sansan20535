@@ -10,6 +10,7 @@ public record SellCreateDto(
 
         String detail,
 
-        Place place
+        Place place,
+        boolean soldOut
 ) {
 }

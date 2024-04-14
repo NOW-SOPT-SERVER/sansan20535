@@ -4,10 +4,7 @@ import clone.carrot.dto.SellCreateDto;
 import clone.carrot.service.SellService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
@@ -18,10 +15,12 @@ public class SellController {
 
     private final SellService sellService;
 
-    @PostMapping
+    @PostMapping("/{customerId}")
     public ResponseEntity createSell(
+            //customerId 명시 안 하면 왜 안돌아가는지
+            @PathVariable("customerId") Long customerId,
             @RequestBody SellCreateDto sellCreateDto
-            ){
-        return ResponseEntity.created(URI.create(sellService.createSell(sellCreateDto))).build();
+    ) {
+        return ResponseEntity.created(URI.create(sellService.createSell(customerId, sellCreateDto))).build();
     }
 }
