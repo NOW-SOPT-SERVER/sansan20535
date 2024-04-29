@@ -1,5 +1,6 @@
 package org.sopt.practice.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.sopt.practice.common.dto.SuccessFindPostResponse;
 import org.sopt.practice.common.dto.SuccessMessage;
@@ -21,7 +22,7 @@ public class PostController {
     @PostMapping("/post")
     public ResponseEntity<SuccessStatusResponse> createPost(
             @RequestHeader("blogId") Long blogId,
-            @RequestBody PostCreateDto postCreateDto
+            @Valid @RequestBody PostCreateDto postCreateDto
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .header("Location", postService.create(blogId, postCreateDto))
