@@ -32,4 +32,10 @@ public class BlogService {
         );
         blog.updateTitle(blogTitleUpdateRequest.title());
     }
+
+    public Blog findBlogById(Long blogId) {
+        return blogRepository.findById(blogId).orElseThrow(
+                () -> new NotFoundException(ErrorMessage.BLOG_NOT_FOUND_BY_ID_EXCEPTION)
+        );
+    }
 }
