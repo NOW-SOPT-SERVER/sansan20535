@@ -3,6 +3,7 @@ package org.sopt.practice.service;
 import lombok.RequiredArgsConstructor;
 import org.sopt.practice.common.dto.ErrorMessage;
 import org.sopt.practice.domain.Blog;
+import org.sopt.practice.domain.Member;
 import org.sopt.practice.domain.Post;
 import org.sopt.practice.dto.PostCreateDto;
 import org.sopt.practice.dto.PostFindDto;
@@ -17,10 +18,15 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final BlogService blogService;
+    private final MemberService memberService;
 
     @Transactional
-    public String create(Long blogId, PostCreateDto postCreateDto) {
+    public String create(Long blogId, Long memberId, PostCreateDto postCreateDto) {
         Blog blog = blogService.findBlogById(blogId);
+        Member member = memberService.findById(memberId);
+        if (blog.getMember().equals(member) == false) {
+            throw new NotFoundException(ErrorMessage.MEMBER_NOT_MATCH_BLOG);
+        }
         Post post = postRepository.save(Post.create(blog, postCreateDto));
         return post.getId().toString();
     }

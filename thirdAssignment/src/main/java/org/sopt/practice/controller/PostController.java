@@ -22,10 +22,11 @@ public class PostController {
     @PostMapping("/post")
     public ResponseEntity<SuccessStatusResponse> createPost(
             @RequestHeader("blogId") Long blogId,
+            @RequestHeader("memberId") Long memberId,
             @Valid @RequestBody PostCreateDto postCreateDto
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .header("Location", postService.create(blogId, postCreateDto))
+                .header("Location", postService.create(blogId, memberId, postCreateDto))
                 .body(SuccessStatusResponse.of(SuccessMessage.POST_CREATE_SUCCESS));
     }
 
