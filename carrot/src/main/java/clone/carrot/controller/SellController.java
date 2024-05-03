@@ -1,8 +1,12 @@
 package clone.carrot.controller;
 
+import clone.carrot.common.SuccessMesasge;
+import clone.carrot.common.SuccessResponse;
+import clone.carrot.domain.Place;
 import clone.carrot.dto.SellCreateDto;
 import clone.carrot.service.SellService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,5 +26,13 @@ public class SellController {
             @RequestBody SellCreateDto sellCreateDto
     ) {
         return ResponseEntity.created(URI.create(sellService.createSell(customerId, sellCreateDto))).build();
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<SuccessResponse> findSellListByPlace(
+            @RequestParam("place") Place place
+    ) {
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .body(SuccessResponse.of(SuccessMesasge.SELLLIST_FIND_BY_PLACE_SUCCESS, sellService.findSellListByPlace(place)));
     }
 }
