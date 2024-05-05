@@ -14,4 +14,8 @@ public record SuccessResponse<T>(
     public static SuccessResponse<SellFindDto> of(SuccessMesasge successMesasge, List<SellFindDto> sellFindDtoList) {
         return new SuccessResponse<SellFindDto>(successMesasge.getStatus(), successMesasge.getMessage(), sellFindDtoList);
     }
+
+    public static SuccessResponse of(SuccessMesasge successMesasge) {
+        return new SuccessResponse(successMesasge.getStatus(), successMesasge.getMessage(), null);
+    }
 }

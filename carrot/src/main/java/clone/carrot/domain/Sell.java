@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Getter
@@ -30,6 +31,9 @@ public class Sell {
     private Place place;
 
     private boolean soldOut;
+
+    @ColumnDefault("0")
+    private long likeCount;
 
     @Builder
     public Sell(String nickname, String title, long cost, boolean costPropose, String detail, Place place, boolean soldOut) {

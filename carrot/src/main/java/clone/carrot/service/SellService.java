@@ -42,4 +42,10 @@ public class SellService {
         List<SellFindDto> sellFindDtoList = sellList.stream().map(SellFindDto::of).toList();
         return sellFindDtoList;
     }
+
+    public Sell findById(Long sellId) {
+        return sellRepository.findById(sellId).orElseThrow(
+                () -> new EntityNotFoundException("Id에 해당하는 판매 목록을 찾을 수 없습니다.")
+        );
+    }
 }
