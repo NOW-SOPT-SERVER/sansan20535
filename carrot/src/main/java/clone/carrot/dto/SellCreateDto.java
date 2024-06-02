@@ -1,6 +1,7 @@
 package clone.carrot.dto;
 
 import clone.carrot.domain.Place;
+import org.springframework.web.multipart.MultipartFile;
 
 public record SellCreateDto(
         String title,
@@ -11,6 +12,7 @@ public record SellCreateDto(
         String detail,
 
         Place place,
-        boolean soldOut
+        boolean soldOut,
+        MultipartFile image
 ) {
 }

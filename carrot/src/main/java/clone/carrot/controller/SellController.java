@@ -23,7 +23,7 @@ public class SellController {
     public ResponseEntity createSell(
             //customerId 명시 안 하면 왜 안돌아가는지
             @PathVariable("customerId") Long customerId,
-            @RequestBody SellCreateDto sellCreateDto
+            @ModelAttribute SellCreateDto sellCreateDto
     ) {
         return ResponseEntity.created(URI.create(sellService.createSell(customerId, sellCreateDto))).build();
     }
@@ -34,5 +34,14 @@ public class SellController {
     ) {
         return ResponseEntity.status(HttpStatus.FOUND)
                 .body(SuccessResponse.of(SuccessMesasge.SELLLIST_FIND_BY_PLACE_SUCCESS, sellService.findSellListByPlace(place)));
+    }
+
+    @DeleteMapping("/{sellId}")
+    public ResponseEntity deleteSell(
+            //customerId 명시 안 하면 왜 안돌아가는지
+            @PathVariable("sellId") Long sellId
+    ) {
+        sellService.deleteSell(sellId);
+        return ResponseEntity.noContent().build();
     }
 }

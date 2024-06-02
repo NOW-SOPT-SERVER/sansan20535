@@ -35,8 +35,10 @@ public class Sell {
     @ColumnDefault("0")
     private long likeCount;
 
+    private String imageUrl;
+
     @Builder
-    public Sell(String nickname, String title, long cost, boolean costPropose, String detail, Place place, boolean soldOut) {
+    public Sell(String nickname, String title, long cost, boolean costPropose, String detail, Place place, boolean soldOut, String imageUrl) {
         this.nickname = nickname;
         this.title = title;
         this.cost = cost;
@@ -44,10 +46,11 @@ public class Sell {
         this.detail = detail;
         this.place = place;
         this.soldOut = soldOut;
+        this.imageUrl = imageUrl;
     }
 
 
-    public static Sell create(String nickname, String title, long cost, boolean costPropose, String detail, Place place, boolean soldOut) {
+    public static Sell create(String nickname, String title, long cost, boolean costPropose, String detail, Place place, boolean soldOut, String imageUrl) {
         return Sell.builder()
                 .nickname(nickname)
                 .title(title)
@@ -56,6 +59,7 @@ public class Sell {
                 .detail(detail)
                 .place(place)
                 .soldOut(soldOut)
+                .imageUrl(imageUrl)
                 .build();
     }
 }
